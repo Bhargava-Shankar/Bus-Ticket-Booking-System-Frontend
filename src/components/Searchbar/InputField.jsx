@@ -27,7 +27,7 @@ const InputField = ({name}) => {
       <div className='flex flex-col'>
         <div className='font-semibold text-sm text-gray-400'>{name}</div>
         <div className='w-max'>
-          <input type="text" name="source" className={` cursor-pointer text-xl font-bold rounded-lg outline-none ${focus} `} ref={inputRef} />
+          <input type="text" name="source" className={` cursor-pointer text-xl font-bold outline-none ${focus} `} ref={inputRef} />
         </div>
       </div>
      
