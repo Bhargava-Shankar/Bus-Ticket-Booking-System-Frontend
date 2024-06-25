@@ -10,9 +10,9 @@ const Searchbar = () => {
       \  cursor-pointer  overflow-clip    \
       \justify-between items-center"
     >
-      <InputField></InputField>
+      <InputField name={"From"}></InputField>
       <div className='w-[0.1px] h-full bg-black'></div>
-      <InputField></InputField>
+      <InputField name={"To"}></InputField>
       <div className='w-[0.1px] h-full bg-black'></div>
       <CalendarField></CalendarField>
       <div className='w-[0.1px] h-full bg-black'></div>

@@ -34,10 +34,10 @@ const CalendarField = () => {
               
                 </div>         
             </div>
-            <div className={`relative top-6 ${showCal ? "" : "invisible"}`}>
+            <div className={`relative top-0 ${showCal ? "visible" : "invisible"}`}>
         
               <Calendar
-                    className="rounded-xl text-sm font-semibold"
+                    className="rounded-xl h-full text-sm font-semibold"
                     onChange={(value,event) => handleDate(value,event)}
               ></Calendar> 
         

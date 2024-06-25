@@ -3,7 +3,7 @@ import landmarkRed from "../../assets/img/landmark-black.svg"
 import landmarkBlack from "../../assets/img/landmark-red.svg"
 import { useRef,useState } from 'react'
 
-const InputField = () => {
+const InputField = ({name}) => {
 
   const inputRef = useRef(null);
   const inputContainerRef = useRef(null);
@@ -25,7 +25,7 @@ const InputField = () => {
         <img src={landmarkBlack} className=' object-contain' alt="" />
       </div>
       <div className='flex flex-col'>
-        <div className='font-semibold text-sm text-gray-400'>From</div>
+        <div className='font-semibold text-sm text-gray-400'>{name}</div>
         <div className='w-max'>
           <input type="text" name="source" className={` cursor-pointer text-xl font-bold rounded-lg outline-none ${focus} `} ref={inputRef} />
         </div>
