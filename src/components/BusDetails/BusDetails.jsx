@@ -2,6 +2,7 @@ import moment from 'moment'
 import React from 'react'
 import SeatLayout from './SeatLayout'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export const busDetails = [
     {
@@ -37,11 +38,12 @@ const BusDetails = () => {
 
   const { busId, busNumber, travelsName, source, destination, arrivalTime, departureTime, conditioningType, seatingType, seatsAvailable, totalSeats } = busDetails[0]
 
-  const [viewSeatLayout,setViewSeatLayout] = useState(false)
+  const [viewSeatLayout,setViewSeatLayout] = useState(true)
 
   let departureTimeFormatted = moment(departureTime).format("HH:MM")
   let arrivalTimeFormatted = moment(arrivalTime).format("HH:MM")
 
+  
   const handleViewSeats = (e) => {
     setViewSeatLayout(!viewSeatLayout)
   }
@@ -87,7 +89,9 @@ const BusDetails = () => {
           viewSeatLayout ? <SeatLayout
           ></SeatLayout> : <div></div>
         }
+        
       </div>
+      
     </div>
   )
 }

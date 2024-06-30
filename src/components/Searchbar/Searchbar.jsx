@@ -7,7 +7,7 @@ const Searchbar = () => {
   return (
     <div className=
       "flex flex-row h-[5rem] rounded-lg bg-white \
-      \  cursor-pointer  overflow-clip    \
+      \  cursor-pointer z-10  \
       \justify-between items-center"
     >
       <InputField name={"From"}></InputField>

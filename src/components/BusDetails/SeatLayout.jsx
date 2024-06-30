@@ -23,43 +23,30 @@ const Seat = ({ booked, seatNumber }) => {
 }
 
 const seatsList = [
-    { seatNumber: "LL1", booked: false },
-    { seatNumber: "LL2", booked: false },
-    { seatNumber: "LL3", booked: false },
-    { seatNumber: "LL4", booked: false },
-    { seatNumber: "LL5", booked: false },
-    { seatNumber: "LL6", booked: false },
-    { seatNumber: "LL7", booked: false },
-    { seatNumber: "LL8", booked: false },
-    { seatNumber: "LR1", booked: false },
-    { seatNumber: "LR2", booked: false },
-    { seatNumber: "LR3", booked: false },
-    { seatNumber: "LR4", booked: false },
-    { seatNumber: "LR5", booked: false },
-    { seatNumber: "LR6", booked: false },
-    { seatNumber: "LR7", booked: false },
-    { seatNumber: "LR8", booked: false }
+    { seatNumber: "LL1", booked: false, price: 800 },
+    { seatNumber: "LL2", booked: false, price: 800 },
+    { seatNumber: "LL3", booked: false, price: 800 },
+    { seatNumber: "LL4", booked: false, price: 800 },
+    { seatNumber: "LL5", booked: false, price: 800 },
+    { seatNumber: "LL6", booked: false, price: 800 },
+    { seatNumber: "LL7", booked: false, price: 1000 },
+    { seatNumber: "LL8", booked: false, price: 1000 },
+    { seatNumber: "LR1", booked: false, price: 800 },
+    { seatNumber: "LR2", booked: false, price: 800 },
+    { seatNumber: "LR3", booked: false, price: 800 },
+    { seatNumber: "LR4", booked: false, price: 800 },
+    { seatNumber: "LR5", booked: false, price: 800 },
+    { seatNumber: "LR6", booked: false, price: 800 },
+    { seatNumber: "LR7", booked: false, price: 1000 },
+    { seatNumber: "LR8", booked: false, price: 1000 }
 ]
 const SeatLayout = () => {
 
-    const [seats, setSeats] = useState(seatsList)
+    const seats = useSelector((state) => state.seatTracker.value.seatsList)
+    const totalPrice = useSelector(state => state.seatTracker.value.totalPrice)
 
-    const count = useSelector((state) => state.seatTracker.value)
     const dispatch = useDispatch()
 
-    const handleSelectSeat = (e, seatNumber, key) => {   
-        let filteredSeats = seats.filter((seat) => seat.seatNumber != seatNumber)
-        console.log(key)
-        let newList = [
-            ...seats.slice(0, key ),
-            { seatNumber: seatNumber, booked: true },
-            ...seats.slice(key + 1)
-        ]
-        setSeats(newList)
-    }
-    useEffect(() => {
-
-    },[seats])
     return (
         <div className='flex flex-col justify-center items-center bg-gray-100 w-full h-[10rem]'>
           <div className='flex flex-row gap-2 flex-wrap items-center w-[24rem]'>
@@ -70,15 +57,18 @@ const SeatLayout = () => {
                           onClick={() => dispatch(selectSeat({key:key+1,...value}))}
                           >
                           <Seat
-                              booked={value.booked}
+                            booked={value.booked}
                             seatNumber={value.seatNumber}   
                         >      
                       </Seat>
                         </div>
                   )
               })
-        }
-          </div>
+            }
+            </div>
+            <div className='text-2xl font-bold text-red-600 self-end m-2 top-0 relative'>
+            ₹{totalPrice}
+            </div>    
           
     </div>
   )
