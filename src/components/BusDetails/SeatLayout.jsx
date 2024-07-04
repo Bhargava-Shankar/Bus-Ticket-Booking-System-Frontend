@@ -48,7 +48,7 @@ const SeatLayout = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className='flex flex-col justify-center items-center bg-gray-100 w-full h-[10rem]'>
+        <div className='flex flex-col justify-center items-center mt-3 w-full h-[10rem]'>
           <div className='flex flex-row gap-2 flex-wrap items-center w-[24rem]'>
               {
               seats.map((value, key) => {

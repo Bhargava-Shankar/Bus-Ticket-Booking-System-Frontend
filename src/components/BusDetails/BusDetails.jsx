@@ -39,15 +39,11 @@ const BusDetails = () => {
   const { busId, busNumber, travelsName, source, destination, arrivalTime, departureTime, conditioningType, seatingType, seatsAvailable, totalSeats } = busDetails[0]
 
   const [viewSeatLayout,setViewSeatLayout] = useState(true)
-
   let departureTimeFormatted = moment(departureTime).format("HH:MM")
   let arrivalTimeFormatted = moment(arrivalTime).format("HH:MM")
-
-  
   const handleViewSeats = (e) => {
     setViewSeatLayout(!viewSeatLayout)
   }
-  
   return (
     <div className='flex flex-col justify-between bg-white rounded-lg h-max w-[40rem] overflow-clip relative top-2'>
       <div className='w-full h-10 pt-2 pl-2' name="header">
@@ -89,9 +85,7 @@ const BusDetails = () => {
           viewSeatLayout ? <SeatLayout
           ></SeatLayout> : <div></div>
         }
-        
       </div>
-      
     </div>
   )
 }

@@ -1,10 +1,17 @@
 import React from 'react'
 import landmarkRed from "../../assets/img/landmark-black.svg"
 import landmarkBlack from "../../assets/img/landmark-red.svg"
-import { useRef,useState } from 'react'
+import { useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setFrom,setTo } from '../../features/busDetails/searchBarSlice'
+import { useEffect } from 'react'
 
-const InputField = ({name}) => {
+const InputField = ({ name }) => {
+  
+  let locationValue;
 
+  const dispatch = useDispatch();
   const inputRef = useRef(null);
   const inputContainerRef = useRef(null);
   const [focus, setFocus] = useState("");
@@ -17,6 +24,19 @@ const InputField = ({name}) => {
     }
   }
 
+  useEffect(() => {
+    console.log(locationValue);
+  },[locationValue])
+  const handleInput = (e) => {
+    if (name === "From") {
+      dispatch(setFrom(e.target.value));
+    }
+    else if(name === "To") {
+      dispatch(setTo(e.target.value));
+    }
+  }
+
+  
   return (
     <div className={`flex flex-row  w-[15rem] h-full overflow-clip items-center ${focus} `}
       ref = {inputContainerRef}
@@ -27,10 +47,9 @@ const InputField = ({name}) => {
       <div className='flex flex-col'>
         <div className='font-semibold text-sm text-gray-400'>{name}</div>
         <div className='w-max'>
-          <input type="text" name="source" className={` cursor-pointer text-xl font-bold outline-none ${focus} `} ref={inputRef} />
+          <input type="text" name="source" className={` cursor-pointer text-xl font-bold outline-none ${focus} `} ref={inputRef} onChange={(e) => handleInput(e)}  />
         </div>
       </div>
-     
     </div>
   )
 }
